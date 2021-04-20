@@ -1,4 +1,4 @@
-name: Automerge
+name: Automatic pull request approval
 
 on:
   pull_request_target:
@@ -10,9 +10,10 @@ jobs:
   automerge:
     runs-on: ubuntu-latest
     steps:
-      - uses: reitermarkus/automerge@v1.5.2
+      - uses: AndrewMusgrave/automatic-pull-request-review@0.0.2
+        if: github.actor == 'MoralesJonathan'
         with:
-          token: ${{ secrets.AUTOMERGE_GITHUB_TOKEN }}
-          merge-method: merge
-          pull-request: ${{ github.event.inputs.pull-request }}
-          required-labels: automerge
+          repo-token: '${{ secrets.GITHUB_TOKEN }}'
+          event: APPROVE
+          body: 'Approved with GH Action'
+          
