@@ -1,0 +1,17 @@
+name: Automerge
+
+on:
+  pull_request_target:
+    types:
+      - opened
+    branches: [master]
+    
+jobs:
+  automerge:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: reitermarkus/automerge@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          merge-method: merge
+          required-labels: automerge
