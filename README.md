@@ -1,2 +1,2 @@
 # testgithubactions
-testing github actions
+Testing github actions
